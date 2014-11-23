@@ -1,0 +1,21 @@
+name: streamlineify
+version: 0.0.0
+description: Streamline transform for browserify.
+keywords:
+  - streamline
+  - browserify
+  - transform
+author: "Christian Tellnes <christian@tellnes.no> (http://christian.tellnes.com/)"
+license: MIT
+repository:
+  type: git
+  url: "https://github.com/tellnes/streamlineify.git"
+bugs:
+  url: "https://github.com/tellnes/streamlineify/issues"
+homepage: "https://github.com/tellnes/streamlineify"
+
+main: index.js
+dependencies:
+  through: ^2.3.6
+  source-map: ~0.1.10
+  streamline: ~0.10.16
