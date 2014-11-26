@@ -31,9 +31,9 @@ module.exports = function (file, options) {
   function end() {
     var source = buf.join('')
       , transformed = streamline.transform(source, transformOptions)
-      , compiled = transformed.toStringWithSourceMap()
+      , compiled = transformed.toStringWithSourceMap({ file: file })
       , consumer = new SourceMapConsumer(compiled.map.toString())
-      , generator = new SourceMapGenerator()
+      , generator = new SourceMapGenerator({ file: file })
 
     generator.setSourceContent(file, source)
 
