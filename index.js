@@ -31,7 +31,15 @@ module.exports = function (file, options) {
   function end() {
     var source = buf.join('')
       , transformed = streamline.transform(source, transformOptions)
-      , compiled = transformed.toStringWithSourceMap({ file: file })
+
+    // https://github.com/Sage/streamlinejs/issues/251
+    if (typeof transformed === 'string') {
+      stream.queue(transformed)
+      stream.queue(null)
+      return
+    }
+
+    var compiled = transformed.toStringWithSourceMap({ file: file })
       , consumer = new SourceMapConsumer(compiled.map.toString())
       , generator = new SourceMapGenerator({ file: file })
 
